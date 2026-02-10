@@ -1,0 +1,9 @@
+.idea/
+.idea
+.venv
+.venv/
+.csv
+.json
+.outputs
+.env
+
