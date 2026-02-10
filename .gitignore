@@ -6,4 +6,4 @@
 .json
 .outputs
 .env
-
+*.pyc
