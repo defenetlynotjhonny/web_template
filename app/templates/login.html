@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Login</h1>
+
+  {% if error %}
+    <div class="alert">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" action="/login" class="card">
+    <label>
+      Username
+      <input name="username" autocomplete="username" required />
+    </label>
+    <label>
+      Password
+      <input name="password" type="password" autocomplete="current-password" required />
+    </label>
+    <button type="submit">Sign in</button>
+  </form>
+
+  <p class="muted">Demo: <code>admin</code> / <code>admin123</code></p>
+{% endblock %}

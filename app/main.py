@@ -1,20 +1,13 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
-app = FastAPI()
+from app.core.config import settings
+from app.api.router import api_router
+from app.web.routes import router as web_router
 
+app = FastAPI(title=settings.app_name)
 
-@app.get("/", response_class=HTMLResponse)
-async def home():
-    return """
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title>FastAPI Page</title>
-        </head>
-        <body>
-            <h1>Hello from FastAPI 🚀</h1>
-            <p>This is a basic FastAPI page.</p>
-        </body>
-    </html>
-    """
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+app.include_router(api_router)
+app.include_router(web_router)

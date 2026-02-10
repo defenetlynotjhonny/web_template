@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title if title else "FastAPI Starter" }}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header class="container header">
+      <div class="brand">FastAPI Starter</div>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        {% if user %}
+          <form method="post" action="/logout" class="inline">
+            <button type="submit">Logout</button>
+          </form>
+        {% else %}
+          <a href="/login">Login</a>
+        {% endif %}
+      </nav>
+    </header>
 
-</body>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
 </html>

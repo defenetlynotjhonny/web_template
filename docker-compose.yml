@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=FastAPI Starter
+      - SECRET_KEY=change-this-in-compose-too
+      - ACCESS_TOKEN_EXP_MINUTES=60
+      - COOKIE_NAME=access_token
+    volumes:
+      - ./app:/app/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload

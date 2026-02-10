@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+  <h1>Hello from FastAPI 🚀</h1>
+  <p>This is a server-rendered page using Jinja2 templates.</p>
 
-</body>
-</html>
+  {% if user %}
+    <p class="ok">Logged in as <b>{{ user.username }}</b>.</p>
+    <p>Try the API: <code>/api/me</code>, <code>/api/health</code></p>
+  {% else %}
+    <p class="warn">You are not logged in.</p>
+    <p>Go to <a href="/login">/login</a>. Demo credentials: <code>admin / admin123</code></p>
+  {% endif %}
+{% endblock %}
